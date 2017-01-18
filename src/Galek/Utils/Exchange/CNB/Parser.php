@@ -54,15 +54,23 @@ class Parser implements IParser
 		}
 	}
 
-	public function findBy($by = 'country', $value)
+	public function getAll()
 	{
+		return $this->exchanges;
+	}
+
+	public function findBy($by = null, $value = null)
+	{
+		if ($by === null || $value === null) {
+			throw new \Exception('Wrong index ("'.$by.'") for search, avaible are "country", "currency", "amount", "code" and "rate". For example: findBy("code", "EUR")');
+		}
 		foreach ($this->exchanges as $index => $data) {
 			if (isset($data[$by])) {
 				if ($data[$by] === $value) {
 					return $this->exchanges[$index];
 				}
 			} else {
-				throw new \Exception('Wrong index ('.$by.') for search, avaible are country, currency, amount, code, rate');
+				throw new \Exception('Wrong index ("'.$by.'") for search, avaible are "country", "currency", "amount", "code" and "rate". For example: findBy("code", "EUR")');
 			}
 		}
 	}

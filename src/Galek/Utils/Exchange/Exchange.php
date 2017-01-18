@@ -6,7 +6,13 @@ namespace Galek\Utils\Exchange;
  */
 abstract class Exchange implements IExchange
 {
-	public $currency = 'CZK';
+	/** @var IParser */
+	public $parser;
+
+	public function __construct()
+	{
+
+	}
 
 	public function transfertToCZK($currency, $amount = 1, $round = false)
 	{
@@ -18,9 +24,23 @@ abstract class Exchange implements IExchange
 		return $transfer;
 	}
 
-	public function findBy($index, $value)
+	public function transfer($currency1, $currency2, $amount = 1, $round = false)
+	{
+		$m1 = $this->findBy('currency', $currency1);
+		$m2 = $this->findBy('currency', $currency2);
+
+		//$transfer = $
+
+	}
+
+	public function findBy($index = null, $value = null)
 	{
 		return $this->parser->findBy($index, $value);
 	}
-	
+
+	public function getAll()
+	{
+		return $this->parser->getAll();
+	}
+
 }
