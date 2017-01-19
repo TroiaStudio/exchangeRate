@@ -20,10 +20,11 @@
 		"nette/safe-stream": "^2",
 		"nette/utils": "~2.4",
 		"nette/di": "~2.4",
-		"nette/caching": "^2.5"
+		"nette/caching": "^2.5",
+		"galek/nette-calendar": "^1.0"
 	},
 	"require-dev": {
-		"nette/tester": "^1.7",
+		"nette/tester": "@dev",
 		"tracy/tracy": "^2.4"
 	}
 }
