@@ -45,3 +45,11 @@ Monthly exchange rate ([#Exotic country](https://github.com/JanGalek/exchangeRat
 ```php
 $cnb = new \Galek\Utils\Exchange\CNB\Day;
 ```
+
+TODO
+----
+- Add Raiffeisenbank
+- Add Česká spořitelna
+- Add ČSOB
+- Add MoneyBank
+- Add ... (write to issue if you want add some else)

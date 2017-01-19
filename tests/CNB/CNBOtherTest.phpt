@@ -1,15 +1,7 @@
 <?php
 require_once __DIR__ . '/CNBTestCase.php';
-/*
-require 'bootstrap.php';
-require __DIR__ . '/../../src/Galek/Utils/Exchange/IExchange.php';
-require __DIR__ . '/../../src/Galek/Utils/Exchange/CNB/CNB.php';
 
-$basic = new \Galek\Utils\Exchange\CNB\CNB;
-*/
 use Tester\Assert;
-use Galek\Utils\Exchange\CNB\Day;
-use Galek\Utils\Exchange\CNB\Other;
 
 class CNBOtherTest extends CNBTestCase
 {

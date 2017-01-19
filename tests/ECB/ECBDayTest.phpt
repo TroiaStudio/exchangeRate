@@ -2,6 +2,7 @@
 require_once __DIR__ . '/CNBTestCase.php';
 
 use Tester\Assert;
+use Galek\Utils\Exchange\ECB\Day;
 
 class CNBDayTest extends CNBTestCase
 {
