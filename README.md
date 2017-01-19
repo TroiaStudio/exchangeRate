@@ -7,6 +7,28 @@
 [![Monthly Downloads](https://poser.pugx.org/galek/exchange-rate/d/monthly)](https://packagist.org/packages/galek/exchange-rate)
 
 
+Package Installation
+-------------------
+
+The best way to install Exchange Rate is using [Composer](http://getcomposer.org/):
+
+```sh
+$ composer require galek/exchange-rate
+```
+
+[Packagist - Versions](https://packagist.org/packages/galek/exchange-rate)
+
+or manual edit composer.json in your project
+
+```json
+"require": {
+    "galek/exchange-rate": "^0.1"
+}
+```
+
+Usage
+----
+
 ČNB - Česká Národní Banka / CNB - Czech National Bank
 -----------------------------------------------------
 
