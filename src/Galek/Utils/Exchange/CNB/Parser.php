@@ -11,6 +11,10 @@ class Parser implements IParser
 	/** @var array */
 	private $exchanges;
 
+	/**
+	 * [__construct description]
+	 * @param [type] $file [description]
+	 */
 	public function __construct($file = null)
 	{
 		$this->file = $file;
@@ -43,8 +47,10 @@ class Parser implements IParser
 		foreach ($this->loadFileLines() as $index => $line) {
 			if ($index > 1 && $line != '') {
 				$cut = explode('|', $line);
-				$this->exchanges[strtolower($cut[0])] = [
-					'country' => $cut[0],
+				$country = $this->convertToUTF8($cut[0]);
+
+				$this->exchanges[strtolower($country)] = [
+					'country' => $country,
 					'currency' => $cut[1],
 					'amount' => $cut[2],
 					'code' => $cut[3],
@@ -52,6 +58,11 @@ class Parser implements IParser
 				];
 			}
 		}
+	}
+
+	private function convertToUTF8($text)
+	{
+		return iconv(mb_detect_encoding($text, mb_detect_order(), true), "UTF-8", $text);
 	}
 
 	public function getAll()
