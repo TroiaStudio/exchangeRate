@@ -1,4 +1,4 @@
-sudo: true
+sudo: false
 language: php
 
 php:
@@ -13,17 +13,11 @@ matrix:
     - php: 7.1
     - php: 7.2
 
-services:
-  - redis-server
-
-before_install:
-  - composer self-update
-
-install:
-  - composer install --no-interaction --prefer-source
-
 script:
-  - ./vendor/bin/tester -p php-cgi -s ./tests/
+  - vendor/bin/tester -p php-cgi tests
 
 after_failure:
   - for i in $(find ./tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done
+
+before_script:
+  - travis_retry composer update --no-interaction
