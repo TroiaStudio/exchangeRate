@@ -4,7 +4,7 @@ require __DIR__ .'/../../vendor/autoload.php';
 use Tracy\Debugger;
 use Galek\Utils\Calendar;
 
-Debugger::enable(__DIR__ . '/log'); // aktivujeme Laděnku
+Debugger::enable(__DIR__ . '/log');
 
 $basic = new \Galek\Utils\Exchange\CNB\Day;
 $basic3 = new \Galek\Utils\Exchange\CNB\Day;

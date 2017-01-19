@@ -19,11 +19,6 @@ class CNBOtherTest extends CNBTestCase
 		Assert::equal(1.42, $this->other->transferToCZK(['currency', 'libra']));
 		Assert::equal(1.42, $this->other->transferToCZK(['country', 'Egypt']));
 		Assert::equal(1.42, $this->other->transferToCZK(['code', 'EGP']));
-		/*
-		Assert::equal(27.02, $this->other->transferToCZK('euro'));
-		Assert::equal(27.02, $this->other->transferToCZK(['currency', 'euro']));
-		Assert::equal(27.02, $this->other->transferToCZK(['country', 'EMU']));
-		Assert::equal(27.02, $this->other->transferToCZK(['code', 'EUR']));*/
 	}
 
 	public function testTransferCZCount()
@@ -34,9 +29,6 @@ class CNBOtherTest extends CNBTestCase
 		Assert::equal(0.0, $this->other->transferToCZK('dong', 1));
 		Assert::equal(0.01, $this->other->transferToCZK('dong', 10));
 		Assert::equal(0.11, $this->other->transferToCZK('dong', 100));
-		//Assert::equal(1.13, $this->other->transferToCZK('dong', 1));
-		//Assert::equal(11.26, $this->other->transferToCZK('dong', 10));
-		//Assert::equal(112.6, $this->other->transferToCZK('dong', 100));
 	}
 
 	public function testTransferOtherCount()
@@ -48,10 +40,6 @@ class CNBOtherTest extends CNBTestCase
 		Assert::equal(1003.55, $this->other->transferToOther('dong', 1.13));
 		Assert::equal(10000.0, $this->other->transferToOther('dong', 11.26));
 		Assert::equal(100000.0, $this->other->transferToOther('dong', 112.6));
-		/*
-		Assert::equal(1.0, $this->other->transferToOther('dong', 1.13));
-		Assert::equal(10.0, $this->other->transferToOther('dong', 11.26));
-		Assert::equal(100.0, $this->other->transferToOther('dong', 112.6));*/
 	}
 
 	public function testTransferBetween()
@@ -68,11 +56,7 @@ class CNBOtherTest extends CNBTestCase
 			$other->findBy('badvalue');
 		}, 'Exception', $ex);
 	}
-/*
-	public function testBasics()
-	{
-		//Assert::equal([], $this->day->findBy(''));
-	}*/
+
 }
 
 $testCase = new CNBOtherTest();
