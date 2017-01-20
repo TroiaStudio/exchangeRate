@@ -48,6 +48,7 @@ $cnb = new \Galek\Utils\Exchange\CNB\Day;
 
 TODO
 ----
+- Universal calculatator for transfer between exchanges
 - Add Raiffeisenbank
 - Add Česká spořitelna
 - Add ČSOB
