@@ -53,6 +53,10 @@ abstract class CNB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 		$this->setup();
 	}
 
+	/**
+	 * [setup description]
+	 * @return [type] [description]
+	 */
 	private function setup()
 	{
 		if ($this->text === null) {
@@ -82,11 +86,23 @@ abstract class CNB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 		return $this->parser->getDate()->format('d.m.Y');
 	}
 
+	/**
+	 * [getUrl description]
+	 * @return string Get source url
+	 */
 	public function getUrl()
 	{
 		return $this->url;
 	}
 
+	/**
+	 * [transfer description]
+	 * @param  [type]  $currency1 [description]
+	 * @param  [type]  $currency2 [description]
+	 * @param  integer $amount    [description]
+	 * @param  boolean $round     [description]
+	 * @return float              [description]
+	 */
 	public function transfer($currency1, $currency2, $amount = 1, $round = false)
 	{
 		$transfer1 = $this->transferFrom($currency1, $amount);

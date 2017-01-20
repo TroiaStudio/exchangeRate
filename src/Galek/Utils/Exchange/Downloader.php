@@ -19,6 +19,11 @@ final class Downloader
 	/** @var Cache */
 	private $cache;
 
+	/**
+	 * [__construct description]
+	 * @param [type] $validate [description]
+	 * @param [type] $url      [description]
+	 */
 	public function __construct($validate, $url = null)
 	{
 		$this->validate = $validate;
@@ -28,17 +33,29 @@ final class Downloader
 		}
 	}
 
+	/**
+	 * [setUrl description]
+	 * @param [type] $url [description]
+	 */
 	public function setUrl($url)
 	{
 		$this->url = $url;
 		$this->cacheData();
 	}
 
+	/**
+	 * [getFile description]
+	 * @return [type] [description]
+	 */
 	public function getFile()
 	{
 		return $this->cacheData();
 	}
 
+	/**
+	 * [validateTime description]
+	 * @return [type] [description]
+	 */
 	private function validateTime()
 	{
 		$now = new Calendar();
@@ -65,6 +82,10 @@ final class Downloader
 		return $diff;
 	}
 
+	/**
+	 * [cacheData description]
+	 * @return [type] [description]
+	 */
 	public function cacheData()
 	{
 		if (!$this->getCache()->load($this->url)) {
@@ -73,6 +94,12 @@ final class Downloader
 		return $this->getCache()->load($this->url);
 	}
 
+	/**
+	 * [download description]
+	 * @param  [type] $url         [description]
+	 * @param  [type] $invalidTime [description]
+	 * @return [type]              [description]
+	 */
 	private function download($url, $invalidTime)
 	{
 		$status = false;
@@ -126,6 +153,10 @@ final class Downloader
 		return $result;
 	}
 
+	/**
+	 * [getCache description]
+	 * @return [type] [description]
+	 */
 	private function getCache()
 	{
 		if (!$this->cache) {

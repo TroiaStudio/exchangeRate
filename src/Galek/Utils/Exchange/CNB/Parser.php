@@ -23,12 +23,20 @@ class Parser implements IParser
 		}
 	}
 
+	/**
+	 * [setFile description]
+	 * @param [type] $file [description]
+	 */
 	public function setFile($file)
 	{
 		$this->file = $file;
 		$this->setExchanges();
 	}
 
+	/**
+	 * [loadFileLines description]
+	 * @return [type] [description]
+	 */
 	private function loadFileLines()
 	{
 		return explode(chr(0x0A), $this->file);
@@ -42,6 +50,9 @@ class Parser implements IParser
 		return new \DateTime(preg_replace('/(.*) #(.*)/', '$1', $this->loadFileLines()[0]));
 	}
 
+	/**
+	 * [setExchanges description]
+	 */
 	private function setExchanges()
 	{
 		foreach ($this->loadFileLines() as $index => $line) {
@@ -67,16 +78,31 @@ class Parser implements IParser
 		];
 	}
 
+	/**
+	 * [convertToUTF8 description]
+	 * @param  [type] $text [description]
+	 * @return [type]       [description]
+	 */
 	private function convertToUTF8($text)
 	{
 		return iconv(mb_detect_encoding($text, mb_detect_order(), true), "UTF-8", $text);
 	}
 
+	/**
+	 * [getAll description]
+	 * @return [type] [description]
+	 */
 	public function getAll()
 	{
 		return $this->exchanges;
 	}
 
+	/**
+	 * [findBy description]
+	 * @param  [type] $by    [description]
+	 * @param  [type] $value [description]
+	 * @return [type]        [description]
+	 */
 	public function findBy($by = null, $value = null)
 	{
 		if ($by === null || $value === null) {
@@ -93,6 +119,11 @@ class Parser implements IParser
 		}
 	}
 
+	/**
+	 * [getSpecificLine description]
+	 * @param  [type] $country [description]
+	 * @return [type]          [description]
+	 */
 	public function getSpecificLine($country)
 	{
 		$country = strtolower($country);

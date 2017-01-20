@@ -11,6 +11,10 @@ final class Other extends CNB implements \Galek\Utils\Exchange\IExchange
 	 */
 	private $url_absolute = "https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_ostatnich_men/kurzy.txt";
 
+	/**
+	 * [$url description]
+	 * @var string
+	 */
    	public $url = "https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_ostatnich_men/kurzy.txt";
 
 	/**
@@ -25,6 +29,10 @@ final class Other extends CNB implements \Galek\Utils\Exchange\IExchange
 	 */
 	public $freq = "m";
 
+	/**
+	 * [$currency description]
+	 * @var string
+	 */
 	public $currency = "CZK";
 
 }

@@ -29,21 +29,46 @@ abstract class Exchange implements IExchange
 		return $transfer;
 	}
 
+	/**
+	 * [getRate description]
+	 * @param  [type] $currency [description]
+	 * @return [type]           [description]
+	 */
 	public function getRate($currency)
 	{
 		return $this->findBy('code', $currency);
 	}
 
+	/**
+	 * [transferToEuro description]
+	 * @param  [type]  $currency [description]
+	 * @param  integer $amount   [description]
+	 * @param  boolean $round    [description]
+	 * @return [type]            [description]
+	 */
 	public function transferToEuro($currency, $amount = 1, $round = false)
 	{
 		return $this->transfer($currency, ['code', 'EUR'], $amount, $round);
 	}
 
+	/**
+	 * [transferToCZK description]
+	 * @param  [type]  $currency [description]
+	 * @param  integer $amount   [description]
+	 * @param  boolean $round    [description]
+	 * @return [type]            [description]
+	 */
 	public function transferToCZK($currency, $amount = 1, $round = false)
 	{
 		return $this->transfer($currency, ['code', 'CZK'], $amount, $round);
 	}
 
+	/**
+	 * [getExchange description]
+	 * @param  [type] $currency [description]
+	 * @param  [type] $value    [description]
+	 * @return [type]           [description]
+	 */
 	public function getExchange($currency = null, $value = null)
 	{
 		$by = $currency;
@@ -56,6 +81,13 @@ abstract class Exchange implements IExchange
 		return ($currency === null ? $this->getAll() : $this->parser->findBy($by, $value));
 	}
 
+	/**
+	 * [transferFrom description]
+	 * @param  [type]  $currency [description]
+	 * @param  integer $amount   [description]
+	 * @param  boolean $round    [description]
+	 * @return [type]            [description]
+	 */
 	public function transferFrom($currency, $amount = 1, $round = false)
 	{
 		$v = $this->getFindByValue($currency);
@@ -71,6 +103,13 @@ abstract class Exchange implements IExchange
 		return $transfer;
 	}
 
+	/**
+	 * [transferTo description]
+	 * @param  [type]  $currency [description]
+	 * @param  integer $amount   [description]
+	 * @param  boolean $round    [description]
+	 * @return [type]            [description]
+	 */
 	public function transferTo($currency, $amount = 1, $round = false)
 	{
 		$v = $this->getFindByValue($currency);
@@ -86,16 +125,31 @@ abstract class Exchange implements IExchange
 		return $transfer;
 	}
 
+	/**
+	 * [findBy description]
+	 * @param  [type] $index [description]
+	 * @param  [type] $value [description]
+	 * @return [type]        [description]
+	 */
 	public function findBy($index = null, $value = null)
 	{
 		return $this->parser->findBy($index, $value);
 	}
 
+	/**
+	 * [getAll description]
+	 * @return [type] [description]
+	 */
 	public function getAll()
 	{
 		return $this->parser->getAll();
 	}
 
+	/**
+	 * [getFindByValue description]
+	 * @param  [type] $currency [description]
+	 * @return [type]           [description]
+	 */
 	public function getFindByValue($currency)
 	{
 		$by = (is_string($currency) ? 'code' : $currency[0]);

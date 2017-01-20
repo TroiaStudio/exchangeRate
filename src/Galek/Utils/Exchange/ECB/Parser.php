@@ -11,6 +11,10 @@ class Parser implements IParser
 	/** @var array */
 	private $exchanges;
 
+	/**
+	 * [$adi Additional information]
+	 * @var [array]
+	 */
 	private $adi = [
 		'USD' => [
 			'country' => 'USA',
@@ -150,16 +154,30 @@ class Parser implements IParser
 		}
 	}
 
+	/**
+	 * [setFile description]
+	 * @param [type] $file [description]
+	 */
 	public function setFile($file)
 	{
 		$this->file = $file;
 		$this->setExchanges();
 	}
 
-	private function object2array($object) {
+	/**
+	 * [object2array description]
+	 * @param  [type] $object [description]
+	 * @return [type]         [description]
+	 */
+	private function object2array($object)
+	{
 		return json_decode(json_encode($object), 1);
 	}
 
+	/**
+	 * [loadFileLines description]
+	 * @return [type] [description]
+	 */
 	private function loadFileLines()
 	{
 		$t = simplexml_load_string($this->file, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_NOBLANKS);
@@ -175,6 +193,9 @@ class Parser implements IParser
 		return new \DateTime($this->loadFileLines()["@attributes"]['time']);
 	}
 
+	/**
+	 * [setExchanges description]
+	 */
 	private function setExchanges()
 	{
 		foreach ($this->loadFileLines()["Cube"] as $index => $line) {
@@ -201,16 +222,31 @@ class Parser implements IParser
 
 	}
 
+	/**
+	 * [convertToUTF8 description]
+	 * @param  [type] $text [description]
+	 * @return [type]       [description]
+	 */
 	private function convertToUTF8($text)
 	{
 		return iconv(mb_detect_encoding($text, mb_detect_order(), true), "UTF-8", $text);
 	}
 
+	/**
+	 * [getAll description]
+	 * @return [type] [description]
+	 */
 	public function getAll()
 	{
 		return $this->exchanges;
 	}
 
+	/**
+	 * [findBy description]
+	 * @param  [type] $by    [description]
+	 * @param  [type] $value [description]
+	 * @return [type]        [description]
+	 */
 	public function findBy($by = null, $value = null)
 	{
 		if ($by === null || $value === null) {
@@ -229,6 +265,11 @@ class Parser implements IParser
 		}
 	}
 
+	/**
+	 * [getSpecificLine description]
+	 * @param  [type] $country [description]
+	 * @return [type]          [description]
+	 */
 	public function getSpecificLine($country)
 	{
 		$country = strtolower($country);

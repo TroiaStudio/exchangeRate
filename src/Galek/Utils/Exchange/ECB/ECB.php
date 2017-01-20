@@ -42,7 +42,10 @@ abstract class ECB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 		$this->setup();
 	}
 
-
+	/**
+	 * [setup description]
+	 * @return [type] [description]
+	 */
 	private function setup()
 	{
 		if ($this->text === null) {
@@ -72,11 +75,22 @@ abstract class ECB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 		return $this->parser->getDate()->format('d.m.Y');
 	}
 
+	/**
+	 * [getUrl description]
+	 * @return [type] [description]
+	 */
 	public function getUrl()
 	{
 		return $this->url;
 	}
 
+	/**
+	 * [transferToEuro description]
+	 * @param  [type]  $currency [description]
+	 * @param  integer $amount   [description]
+	 * @param  boolean $round    [description]
+	 * @return [type]            [description]
+	 */
 	public function transferToEuro($currency, $amount = 1, $round = false)
 	{
 		$v = $this->getFindByValue($currency);
@@ -91,11 +105,26 @@ abstract class ECB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 		return $transfer;
 	}
 
+	/**
+	 * [transferToCZK description]
+	 * @param  [type]  $currency [description]
+	 * @param  integer $amount   [description]
+	 * @param  boolean $round    [description]
+	 * @return [type]            [description]
+	 */
 	public function transferToCZK($currency, $amount = 1, $round = false)
 	{
 		return $this->transfer($currency, ['code', 'CZK'], $amount, $round);
 	}
 
+	/**
+	 * [transfer description]
+	 * @param  [type]  $currency1 [description]
+	 * @param  [type]  $currency2 [description]
+	 * @param  integer $amount    [description]
+	 * @param  boolean $round     [description]
+	 * @return [type]             [description]
+	 */
 	public function transfer($currency1, $currency2, $amount = 1, $round = false)
 	{
 		$v = $this->getFindByValue($currency1);
@@ -117,6 +146,13 @@ abstract class ECB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 		return $transfer;
 	}
 
+	/**
+	 * [transferTo description]
+	 * @param  [type]  $currency [description]
+	 * @param  integer $amount   [description]
+	 * @param  boolean $round    [description]
+	 * @return [type]            [description]
+	 */
 	public function transferTo($currency, $amount = 1, $round = false)
 	{
 		return $this->transfer($this->currency, $currency, $amount, $round);
