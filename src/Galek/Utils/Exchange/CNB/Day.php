@@ -11,6 +11,8 @@ final class Day extends CNB implements \Galek\Utils\Exchange\IExchange
 
 	public $freq = "d";
 
+	public $currency = "CZK";
+
 	public function getEuro()
 	{
 		return $this->parser->findBy('currency', 'euro')['rate'];

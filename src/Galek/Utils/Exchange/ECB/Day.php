@@ -11,10 +11,7 @@ final class Day extends ECB implements \Galek\Utils\Exchange\IExchange
 
 	public $freq = "d";
 
-	public function getEuro()
-	{
-		return $this->parser->findBy('currency', 'euro')['rate'];
-	}
+	public $currency = "EUR";
 
 	public function getZloty()
 	{

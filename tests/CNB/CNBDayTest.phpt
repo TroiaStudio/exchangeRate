@@ -7,7 +7,7 @@ class CNBDayTest extends CNBTestCase
 {
 	public function testTransferCZFormat()
 	{
-		Assert::equal(27.02, $this->day->transferToCZK('euro'));
+		Assert::equal(27.02, $this->day->transferToCZK('EUR'));
 		Assert::equal(27.02, $this->day->transferToCZK(['currency', 'euro']));
 		Assert::equal(27.02, $this->day->transferToCZK(['country', 'EMU']));
 		Assert::equal(27.02, $this->day->transferToCZK(['code', 'EUR']));
@@ -16,22 +16,22 @@ class CNBDayTest extends CNBTestCase
 
 	public function testTransferCZCount()
 	{
-		Assert::equal(2702.0, $this->day->transferToCZK('euro', 100));
-		Assert::equal(270.2, $this->day->transferToCZK('euro', 10));
-		Assert::equal(27.02, $this->day->transferToCZK('euro', 1));
-		Assert::equal(0.43, $this->day->transferToCZK('rubl', 1));
-		Assert::equal(4.27, $this->day->transferToCZK('rubl', 10));
-		Assert::equal(42.71, $this->day->transferToCZK('rubl', 100));
+		Assert::equal(2702.0, $this->day->transferToCZK('EUR', 100));
+		Assert::equal(270.2, $this->day->transferToCZK('EUR', 10));
+		Assert::equal(27.02, $this->day->transferToCZK('EUR', 1));
+		Assert::equal(0.43, $this->day->transferToCZK('RUB', 1));
+		Assert::equal(4.27, $this->day->transferToCZK('RUB', 10));
+		Assert::equal(42.71, $this->day->transferToCZK('RUB', 100));
 	}
 
 	public function testTransferOtherCount()
 	{
-		Assert::equal(100.0, $this->day->transferToOther('euro', 2702));
-		Assert::equal(9.99, $this->day->transferToOther('euro', 270));
-		Assert::equal(1.0, $this->day->transferToOther('euro', 27.02));
-		Assert::equal(1.01, $this->day->transferToOther('rubl', 0.43));
-		Assert::equal(10.0, $this->day->transferToOther('rubl', 4.27));
-		Assert::equal(100.0, $this->day->transferToOther('rubl', 42.71));
+		Assert::equal(100.0, $this->day->transferTo('EUR', 2702));
+		Assert::equal(9.99, $this->day->transferTo('EUR', 270));
+		Assert::equal(1.0, $this->day->transferTo('EUR', 27.02));
+		Assert::equal(1.01, $this->day->transferTo('RUB', 0.43));
+		Assert::equal(10.0, $this->day->transferTo('RUB', 4.27));
+		Assert::equal(100.0, $this->day->transferTo('RUB', 42.71));
 	}
 
 	public function testTransferBetween()

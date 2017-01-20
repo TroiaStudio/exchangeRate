@@ -8,22 +8,13 @@ Debugger::enable(__DIR__ . '/log');
 
 $basic = new \Galek\Utils\Exchange\ECB\Day;
 
-echo "transfert From CZK to AUD: ". $basic->transferToCZK(['country', 'Austrálie']).'<br>';
+//Assert::equal(6358.02, $this->day->transferTo('RUB', 100));
 
-echo "Euro: ". $basic->getEuro(). '<br>';
-echo "Zlotý: ". $basic->getZloty(). '<br>';
+$t2 = $basic->getRate('RUB');
+dump($t2['amount'].' '. $t2['code'] .' = '. $t2['rate']. ' EUR');
 
-echo "Rusko: ". $basic->findBy('country', 'Rusko')['rate']. '<br>';
-echo "42.711: ". $basic->findBy('rate', '42.711')['country']. '<br><hr>';
+echo "transfert 100 EUR to RUB: ". $basic->transferTo('RUB', 100).'<br><hr>';
 
-echo "transfert To CZK: ". $basic->transferToCZK('euro', 10, true).'<br>';
-echo "transfert From CZK to Euro: ". $basic->transferToOther('euro', 100).'<br>';
-echo "transfert EUR TO RUB: ". $basic->transfer('euro', 'rubl', 100).'<br><hr>';
+echo "transfert 1 AUD to CZK: ". $basic->transfer('AUD', 'CZK', 1).'<br><hr>';
 
-echo "transfert To CZK by array: ". $basic->transferToCZK(['country', 'EMU'], 10, true).'<br>';
-echo "transfert From CZK to Euro by array: ". $basic->transferToOther(['country', 'EMU'], 100).'<br>';
-echo "transfert EUR TO RUB: ". $basic->transfer(['country', 'EMU'], ['country', 'Rusko'], 100).'<br><hr>';
-
-echo "transfert To CZK by array: ". $basic->transferToCZK(['code', 'EUR'], 10, true).'<br>';
-echo "transfert From CZK to Euro by array: ". $basic->transferToOther(['code', 'EUR'], 100).'<br>';
-echo "transfert EUR TO RUB: ". $basic->transfer(['code', 'EUR'], ['code', 'RUB'], 100).'<br><hr><strong>History:</strong><br>';
+echo "transfert 1 AUD to CZK: ". $basic->transferToCZK('AUD', 1).'<br><hr>';

@@ -25,12 +25,6 @@ final class Other extends CNB implements \Galek\Utils\Exchange\IExchange
 	 */
 	public $freq = "m";
 
-	/**
-	 * [getEGB description]
-	 * @return [type] [description]
-	 */
-	public function getEGB()
-	{
-		return $this->parser->getSpecificLine('Egypt')['rate'];
-	}
+	public $currency = "CZK";
+
 }

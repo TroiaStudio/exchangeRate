@@ -12,12 +12,14 @@ abstract class Exchange implements IExchange
 	/** @var int Spaces to round */
 	public $roundspaces = 2;
 
-	public function transferToCZK($currency, $amount = 1, $round = false)
-	{
-		$by = (is_string($currency) ? 'currency' : $currency[0]);
-		$value = (is_string($currency) ? $currency : $currency[1]);
+	/** @var string Bank currency */
+	public $currency = "EUR";
 
-		$m = $this->findBy($by, $value);
+	public function transferBasicCurrency($currency, $amount = 1, $round = false)
+	{
+		$v = $this->getFindByValue($currency);
+		$m = $this->findBy($v['by'], $v['value']);
+
 		$transfer = $amount * $m['rate'] / $m['amount'];
 		if ($round) {
 			$transfer = round($transfer);
@@ -27,36 +29,61 @@ abstract class Exchange implements IExchange
 		return $transfer;
 	}
 
-	public function transferToOther($currency, $amount = 1, $round = false)
+	public function getRate($currency)
 	{
-		$by = (is_string($currency) ? 'currency' : $currency[0]);
-		$value = (is_string($currency) ? $currency : $currency[1]);
+		return $this->findBy('code', $currency);
+	}
 
-		$m = $this->findBy($by, $value);
-		$transfer = $amount / $m['rate'] * $m['amount'];
+	public function transferToEuro($currency, $amount = 1, $round = false)
+	{
+		return $this->transfer($currency, ['code', 'EUR'], $amount, $round);
+	}
 
+	public function transferToCZK($currency, $amount = 1, $round = false)
+	{
+		return $this->transfer($currency, ['code', 'CZK'], $amount, $round);
+	}
+
+	public function getExchange($currency = null, $value = null)
+	{
+		$by = $currency;
+		if (is_array($currency)) {
+			$by = $currency[0];
+			if ($value === null && isset($currency[1])) {
+				$value = $currency[1];
+			}
+		}
+		return ($currency === null ? $this->getAll() : $this->parser->findBy($by, $value));
+	}
+
+	public function transferFrom($currency, $amount = 1, $round = false)
+	{
+		$v = $this->getFindByValue($currency);
+		$m = $this->findBy($v['by'], $v['value']);
+
+		$transfer = ($amount * $m['rate'] / $m['amount']);
 		if ($round) {
 			$transfer = round($transfer);
 		} else {
 			$transfer = round($transfer, $this->roundspaces);
 		}
+
 		return $transfer;
 	}
 
-	/**
-	 * Transfer exchange from another then CZK, but USING CZK TO CONVERT!
-	 * @param  [type]  $currency1 [description]
-	 * @param  [type]  $currency2 [description]
-	 * @param  integer $amount    [description]
-	 * @param  boolean $round     [description]
-	 * @return [type]             [description]
-	 */
-	public function transfer($currency1, $currency2, $amount = 1, $round = false)
+	public function transferTo($currency, $amount = 1, $round = false)
 	{
-		$transfer1 = $this->transferToCZK($currency1, $amount);
-		$transfer2 = $this->transferToOther($currency2, $transfer1, $round);
+		$v = $this->getFindByValue($currency);
+		$m = $this->findBy($v['by'], $v['value']);
 
-		return $transfer2;
+		$transfer = ($amount / $m['rate'] * $m['amount']);
+		if ($round) {
+			$transfer = round($transfer);
+		} else {
+			$transfer = round($transfer, $this->roundspaces);
+		}
+
+		return $transfer;
 	}
 
 	public function findBy($index = null, $value = null)
@@ -67,6 +94,13 @@ abstract class Exchange implements IExchange
 	public function getAll()
 	{
 		return $this->parser->getAll();
+	}
+
+	public function getFindByValue($currency)
+	{
+		$by = (is_string($currency) ? 'code' : $currency[0]);
+		$value = (is_string($currency) ? $currency : $currency[1]);
+		return ['by' => $by, 'value' => $value];
 	}
 
 }

@@ -17,6 +17,9 @@ abstract class CNB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 	/** @var time H:i */
 	public $validate = '14:30';
 
+	/** @var string Bank currency */
+	public $currency = "CZK";
+
 	/** @var Downloader */
 	public $downloader;
 
@@ -82,6 +85,13 @@ abstract class CNB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 	public function getUrl()
 	{
 		return $this->url;
+	}
+
+	public function transfer($currency1, $currency2, $amount = 1, $round = false)
+	{
+		$transfer1 = $this->transferFrom($currency1, $amount);
+		$transfer = $this->transferTo($currency2, $transfer1, $round);
+		return $transfer;
 	}
 
 }

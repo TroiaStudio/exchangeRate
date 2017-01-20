@@ -54,10 +54,17 @@ class Parser implements IParser
 					'currency' => $cut[1],
 					'amount' => $cut[2],
 					'code' => $cut[3],
-					'rate' => str_replace(',', '.', $cut[4]),
+					'rate' => str_replace(',', '.', $cut[4])
 				];
 			}
 		}
+		$this->exchanges['ceska republika'] = [
+			'country' => 'Česká republika',
+			'currency' => 'koruna',
+			'amount' => 1,
+			'code' => 'CZK',
+			'rate' => 1.0
+		];
 	}
 
 	private function convertToUTF8($text)
