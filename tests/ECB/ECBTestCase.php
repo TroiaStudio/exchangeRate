@@ -14,7 +14,7 @@ abstract class ECBTestCase extends Tester\TestCase
 
 	public function __construct()
 	{
-		$this->day = new Day($this->loadFile('eurofxref-daily.xml'));
+		$this->day = new Day(null, $this->loadFile('eurofxref-daily.xml'));
 	}
 
 	private function loadFile($filename)
@@ -31,7 +31,7 @@ abstract class ECBTestCase extends Tester\TestCase
 
 	public function getNewDay()
 	{
-		return new Day($this->loadFile('eurofxref-daily.xml'));
+		return new Day(null, $this->loadFile('eurofxref-daily.xml'));
 	}
 
 }

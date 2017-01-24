@@ -15,8 +15,8 @@ abstract class CNBTestCase extends Tester\TestCase
 
 	public function __construct()
 	{
-		$this->day = new Day($this->loadFile('denni_kurz.txt'));
-		$this->other = new Other($this->loadFile('kurzy.txt'));
+		$this->day = new Day(null, $this->loadFile('denni_kurz.txt'));
+		$this->other = new Other(null, $this->loadFile('kurzy.txt'));
 	}
 
 	private function loadFile($filename)
@@ -33,11 +33,11 @@ abstract class CNBTestCase extends Tester\TestCase
 
 	public function getNewDay()
 	{
-		return new Day($this->loadFile('denni_kurz.txt'));
+		return new Day(null, $this->loadFile('denni_kurz.txt'));
 	}
 
 	public function getNewOther()
 	{
-		return new Other($this->loadFile('kurzy.txt'));
+		return new Other(null, $this->loadFile('kurzy.txt'));
 	}
 }
