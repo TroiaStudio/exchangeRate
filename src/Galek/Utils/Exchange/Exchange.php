@@ -19,12 +19,12 @@ abstract class Exchange implements IExchange
 
 	public function __construct($tempDir = null)
 	{
-		$this->tempDir = $tempDir;
+		$this->setTempDir($tempDir);
 	}
 
 	public function setTempDir($tempDir)
 	{
-		if ($tempDir = null) {
+		if ($tempDir == null) {
 			$this->tempDir = __DIR__ . '/temp/';
 		} else {
 			$this->tempDir = $tempDir;
