@@ -1,4 +1,4 @@
 vendor/
 composer.lock
-!src/Galek/Utils/Exchange/temp/.gitignore
 src/Galek/Utils/Exchange/temp/*
+!src/Galek/Utils/Exchange/temp/.gitignore
