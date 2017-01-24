@@ -19,14 +19,17 @@ final class Downloader
 	/** @var Cache */
 	private $cache;
 
+	private $tempDir;
+
 	/**
 	 * [__construct description]
 	 * @param [type] $validate [description]
 	 * @param [type] $url      [description]
 	 */
-	public function __construct($validate, $url = null)
+	public function __construct($validate, $tempDir, $url = null)
 	{
 		$this->validate = $validate;
+		$this->tempDir = $tempDir;
 		$this->url = $url;
 		if ($url !== null) {
 			$this->cacheData();
@@ -131,8 +134,7 @@ final class Downloader
 	 */
 	private function saveToFile($url, $data)
 	{
-		$filename = __DIR__ . '/temp/' . md5($url).'.txt';
-		chown($filename, 666);
+		$filename = $this->tempDir . md5($url).'.txt';
 		$handle = fopen('nette.safe://'.$filename, 'w');
 		fwrite($handle, $data);
 		fclose($handle);
@@ -145,7 +147,7 @@ final class Downloader
 	 */
 	private function loadToFile($url)
 	{
-		$filename = __DIR__ . '/temp/' . md5($url).'.txt';
+		$filename = $this->tempDir . md5($url).'.txt';
 
 		$handle = fopen('nette.safe://'.$filename, 'r');
 		$result = fread($handle, filesize($filename));
@@ -160,7 +162,7 @@ final class Downloader
 	private function getCache()
 	{
 		if (!$this->cache) {
-			$storage = new FileStorage(__DIR__ . '/temp');
+			$storage = new FileStorage($this->tempDir);
 			$this->cache = new Cache($storage);
 		}
 		return $this->cache;

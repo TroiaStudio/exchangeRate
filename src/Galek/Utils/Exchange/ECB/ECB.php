@@ -49,7 +49,7 @@ abstract class ECB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 	private function setup()
 	{
 		if ($this->text === null) {
-			$this->downloader = new Downloader([$this->freq, $this->validate], $this->url);
+			$this->downloader = new Downloader([$this->freq, $this->validate], $this->tempDir, $this->url);
 			$this->parser = new Parser($this->downloader->getFile());
 		} else {
 			$this->parser = new Parser($this->text);

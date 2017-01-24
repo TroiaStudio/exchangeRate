@@ -15,6 +15,22 @@ abstract class Exchange implements IExchange
 	/** @var string Bank currency */
 	public $currency = "EUR";
 
+	public $tempDir;
+
+	public function __construct($tempDir = null)
+	{
+		$this->tempDir = $tempDir;
+	}
+
+	public function setTempDir($tempDir)
+	{
+		if ($tempDir = null) {
+			$this->tempDir = __DIR__ . '/temp/';
+		} else {
+			$this->tempDir = $tempDir;
+		}
+	}
+
 	public function transferBasicCurrency($currency, $amount = 1, $round = false)
 	{
 		$v = $this->getFindByValue($currency);
