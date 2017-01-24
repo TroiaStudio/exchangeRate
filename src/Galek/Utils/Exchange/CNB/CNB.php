@@ -32,12 +32,15 @@ abstract class CNB extends \Galek\Utils\Exchange\Exchange implements \Galek\Util
 	/** @var string */
 	public $text;
 
+	public $tempDir;
+
 	/**
 	 * [__construct description]
 	 * @param string $text For testing
 	 */
-	public function __construct($text = null)
+	public function __construct($text = null, $tempDir = null)
 	{
+		parent::__construct($tempDir);
 		$this->text = $text;
 		$this->setup();
 	}

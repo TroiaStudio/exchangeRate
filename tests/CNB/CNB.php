@@ -29,7 +29,7 @@ echo "transfert 1 CZK to AUD: ". $basic->transferToCZK(['country', 'Austrálie']
 echo "Euro: ". $basic->getEuro(). '<br>';
 echo "Zlotý: ". $basic->getZloty(). '<br>';
 
-echo "EGB: ". $basic2->getEGB(). '<br>';
+//echo "EGB: ". $basic2->getEGB(). '<br>';
 echo "UAH: ". $basic2->findByCountry('Ukrajina')['rate']. '<br>';
 echo "Rusko: ". $basic->findBy('country', 'Rusko')['rate']. '<br>';
 echo "42.711: ". $basic->findBy('rate', '42.711')['country']. '<br><hr>';
