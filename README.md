@@ -22,7 +22,7 @@ or manual edit composer.json in your project
 
 ```json
 "require": {
-    "galek/exchange-rate": "^0.2.2"
+    "galek/exchange-rate": "^0.2.6"
 }
 ```
 

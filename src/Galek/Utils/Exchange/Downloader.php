@@ -36,6 +36,11 @@ final class Downloader
 		}
 	}
 
+	public function setTempDir($tempDir)
+	{
+		$this->tempDir = $tempDir;
+	}
+
 	/**
 	 * [setUrl description]
 	 * @param [type] $url [description]

@@ -15,7 +15,11 @@ abstract class Exchange implements IExchange
 	/** @var string Bank currency */
 	public $currency = "EUR";
 
+	/** @var string Path to temp dir with permisions */
 	public $tempDir;
+
+	/** @var Downloader */
+	public $downloader;
 
 	public function __construct($tempDir = null)
 	{
@@ -28,6 +32,10 @@ abstract class Exchange implements IExchange
 			$this->tempDir = __DIR__ . '/temp/';
 		} else {
 			$this->tempDir = $tempDir;
+		}
+
+		if ($this->downloader !== null) {
+			$this->downloader->setTempDir($this->tempDir);
 		}
 	}
 
