@@ -132,7 +132,7 @@ final class Downloader
 	private function saveToFile($url, $data)
 	{
 		$filename = __DIR__ . '/temp/' . md5($url).'.txt';
-
+		chown($filename, 666);
 		$handle = fopen('nette.safe://'.$filename, 'w');
 		fwrite($handle, $data);
 		fclose($handle);
