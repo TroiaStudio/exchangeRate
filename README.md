@@ -1,6 +1,6 @@
 # exchangeRate
 
-[![Travis] (https://travis-ci.org/JanGalek/exchangeRate.svg?branch=master)](https://travis-ci.org/JanGalek/exchangeRate)
+[![Travis](https://travis-ci.org/JanGalek/exchangeRate.svg?branch=master)](https://travis-ci.org/JanGalek/exchangeRate)
 [![Total Downloads](https://poser.pugx.org/galek/exchange-rate/downloads)](https://packagist.org/packages/galek/exchange-rate)
 [![Latest Stable Version](https://poser.pugx.org/galek/exchange-rate/v/stable)](https://packagist.org/packages/galek/exchange-rate)
 [![License](https://poser.pugx.org/galek/exchange-rate/license)](https://packagist.org/packages/galek/exchange-rate)
