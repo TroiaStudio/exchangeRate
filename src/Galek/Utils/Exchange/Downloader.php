@@ -3,7 +3,7 @@ namespace Galek\Utils\Exchange;
 
 use Nette\Caching\Cache;
 use Nette\Caching\Storages\FileStorage;
-use Galek\Utils\Calendar;
+use Galek\Utils\Calendar\Calendar;
 
 final class Downloader
 {
