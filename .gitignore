@@ -2,3 +2,5 @@ vendor/
 composer.lock
 !src/Galek/Utils/Exchange/temp/.gitignore
 .idea
+tests/temp/*
+!tests/temp/.gitignore

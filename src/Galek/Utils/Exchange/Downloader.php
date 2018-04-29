@@ -1,6 +1,7 @@
 <?php
 namespace Galek\Utils\Exchange;
 
+use Galek\Utils\Calendar\Day;
 use Nette\Caching\Cache;
 use Nette\Caching\Storages\FileStorage;
 use Galek\Utils\Calendar\Calendar;
@@ -13,9 +14,6 @@ final class Downloader
 	/** @var array */
 	public $validate;
 
-	/** @var string */
-	private $file;
-
 	/** @var Cache */
 	private $cache;
 
@@ -24,6 +22,7 @@ final class Downloader
 	/**
 	 * [__construct description]
 	 * @param [type] $validate [description]
+	 * @param string $tempDir
 	 * @param [type] $url      [description]
 	 */
 	public function __construct($validate, $tempDir, $url = null)
@@ -76,10 +75,6 @@ final class Downloader
 
 		$invalidTime = new Calendar($day.'.'.$m.'.'.$Y.' '.$this->validate[1]);
 		$invalidTime->add(date_interval_create_from_date_string('5 minutes'));
-
-		if (!$invalidTime->isWorkDay()) {
-			$invalidTime->getWorkDay(true);
-		}
 
 		$diff = strtotime($invalidTime->format('Y-m-d H:i:s')) - strtotime($now->format('Y-m-d H:i:s'));
 		if ($diff < 0) {
