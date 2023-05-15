@@ -1,7 +1,9 @@
 <?php
 namespace TroiaStudio\ExchangeRate\ECB;
 
-final class Day extends ECB implements \TroiaStudio\ExchangeRate\IExchange
+use TroiaStudio\ExchangeRate\IExchange;
+
+final class Day extends ECB implements IExchange
 {
 	/**
 	 * [$url_absolute description]

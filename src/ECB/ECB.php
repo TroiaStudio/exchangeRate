@@ -2,9 +2,10 @@
 namespace TroiaStudio\ExchangeRate\ECB;
 
 use TroiaStudio\ExchangeRate\Downloader;
-use TroiaStudio\ExchangeRate\ECB\time;
+use TroiaStudio\ExchangeRate\Exchange;
+use TroiaStudio\ExchangeRate\IExchange;
 
-abstract class ECB extends \TroiaStudio\ExchangeRate\Exchange implements \TroiaStudio\ExchangeRate\IExchange
+abstract class ECB extends Exchange implements IExchange
 {
 	/** @var string */
 	private $url_absolute = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
@@ -15,7 +16,7 @@ abstract class ECB extends \TroiaStudio\ExchangeRate\Exchange implements \TroiaS
 	/** @var \DateTime | null */
 	public $history = null;
 
-	/** @var time H:i */
+	/** @var string H:i */
 	public $validate = '16:30';
 
 	/** @var string Bank currency */

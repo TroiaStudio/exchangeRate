@@ -1,10 +1,11 @@
 <?php
 namespace TroiaStudio\ExchangeRate\CNB;
 
-use TroiaStudio\ExchangeRate\CNB\time;
 use TroiaStudio\ExchangeRate\Downloader;
+use TroiaStudio\ExchangeRate\Exchange;
+use TroiaStudio\ExchangeRate\IExchange;
 
-abstract class CNB extends \TroiaStudio\ExchangeRate\Exchange implements \TroiaStudio\ExchangeRate\IExchange
+abstract class CNB extends Exchange implements IExchange
 {
 	/** @var string */
 	private $url_absolute = "https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt";
@@ -15,7 +16,7 @@ abstract class CNB extends \TroiaStudio\ExchangeRate\Exchange implements \TroiaS
 	/** @var \DateTime | null */
 	public $history = null;
 
-	/** @var time H:i */
+	/** @var string H:i */
 	public $validate = '14:30';
 
 	/** @var string Bank currency */

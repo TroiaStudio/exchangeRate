@@ -1,7 +1,9 @@
 <?php
 namespace TroiaStudio\ExchangeRate\CNB;
 
-final class Other extends CNB implements \TroiaStudio\ExchangeRate\IExchange
+use TroiaStudio\ExchangeRate\IExchange;
+
+final class Other extends CNB implements IExchange
 {
 	/**
 	 * [$url description]
