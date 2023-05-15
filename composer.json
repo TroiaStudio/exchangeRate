@@ -1,5 +1,5 @@
 {
-	"name": "galek/exchange-rate",
+	"name": "troia-studio/exchange-rate",
 	"description": "Exchange rate, base ČNB",
 	"homepage": "https://jan-galek.cz",
 	"type": "project",
@@ -12,16 +12,23 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"Galek\\Utils\\Exchange\\": "src/Galek/Utils/Exchange"
+			"TroiaStudio\\ExchangeRate\\": "src/"
 		}
 	},
 	"require": {
-		"php": ">= 7.0",
+		"php": ">= 7.4",
 		"nette/safe-stream": "^2",
 		"nette/utils": "~2.4",
 		"nette/di": "~2.4",
 		"nette/caching": "^2.5",
-		"galek/nette-calendar": "master-dev"
+		"galek/nette-calendar": "master-dev",
+		"ext-simplexml": "*",
+		"ext-mbstring": "*",
+		"ext-curl": "*",
+		"symfony/polyfill-mbstring": "^1.27",
+		"symfony/polyfill-iconv": "^1.27",
+		"symfony/polyfill-php72": "^1.27",
+		"symfony/polyfill-php81": "^1.27"
 	},
 	"require-dev": {
 		"nette/tester": "@dev",

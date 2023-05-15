@@ -36,14 +36,16 @@ You can use exchange rate of ČNB
 
 Daily exchange rate ([#avaible countries](https://github.com/JanGalek/exchangeRate/wiki/%C4%8CNB---Daily-countries))
 -------------------
+
 ```php
-$cnb = new \Galek\Utils\Exchange\CNB\Day;
+$cnb = new \TroiaStudio\ExchangeRate\CNB\Day;
 ```
 
 Monthly exchange rate ([#Exotic country](https://github.com/JanGalek/exchangeRate/wiki/%C4%8CNB---Exotic-countries)))
 --------------------------------------
+
 ```php
-$cnb = new \Galek\Utils\Exchange\CNB\Day;
+$cnb = new \TroiaStudio\ExchangeRate\CNB\Day;
 ```
 
 TODO

@@ -2,8 +2,8 @@
 
 $container = require __DIR__ . '/../../vendor/autoload.php';
 
-use Galek\Utils\Exchange\CNB\Day;
-use Galek\Utils\Exchange\CNB\Other;
+use TroiaStudio\ExchangeRate\CNB\Day;
+use TroiaStudio\ExchangeRate\CNB\Other;
 
 abstract class CNBTestCase extends Tester\TestCase
 {

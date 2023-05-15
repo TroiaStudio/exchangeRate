@@ -2,7 +2,7 @@
 
 $container = require __DIR__ . '/../../vendor/autoload.php';
 
-use Galek\Utils\Exchange\ECB\Day;
+use TroiaStudio\ExchangeRate\ECB\Day;
 
 abstract class ECBTestCase extends Tester\TestCase
 {

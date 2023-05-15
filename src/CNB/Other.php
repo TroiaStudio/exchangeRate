@@ -1,9 +1,7 @@
 <?php
-namespace Galek\Utils\Exchange\CNB;
+namespace TroiaStudio\ExchangeRate\CNB;
 
-use Galek\Utils\Exchange\Downloader;
-
-final class Other extends CNB implements \Galek\Utils\Exchange\IExchange
+final class Other extends CNB implements \TroiaStudio\ExchangeRate\IExchange
 {
 	/**
 	 * [$url description]

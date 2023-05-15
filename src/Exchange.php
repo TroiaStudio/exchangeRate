@@ -1,5 +1,5 @@
 <?php
-namespace Galek\Utils\Exchange;
+namespace TroiaStudio\ExchangeRate;
 
 /**
  * @author Jan Galek

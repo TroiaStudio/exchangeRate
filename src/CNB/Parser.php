@@ -1,7 +1,7 @@
 <?php
-namespace Galek\Utils\Exchange\CNB;
+namespace TroiaStudio\ExchangeRate\CNB;
 
-use Galek\Utils\Exchange\IParser;
+use TroiaStudio\ExchangeRate\IParser;
 
 class Parser implements IParser
 {
