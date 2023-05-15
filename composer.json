@@ -2,7 +2,7 @@
 	"name": "troia-studio/exchange-rate",
 	"description": "Exchange rate, base ČNB",
 	"homepage": "https://jan-galek.cz",
-	"type": "project",
+	"type": "library",
 	"license": "GPL-3.0",
 	"authors": [
 		{
@@ -21,7 +21,6 @@
 		"nette/utils": "~2.4",
 		"nette/di": "~2.4",
 		"nette/caching": "^2.5",
-		"galek/nette-calendar": "master-dev",
 		"ext-simplexml": "*",
 		"ext-mbstring": "*",
 		"ext-curl": "*",
