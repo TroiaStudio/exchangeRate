@@ -29,7 +29,7 @@ final class Downloader
 		$this->validate = $validate;
 		$this->tempDir = $tempDir;
 		$this->url = $url;
-		if ($url !== null) {
+		if ($url !== null && $tempDir !== null) {
 			$this->cacheData();
 		}
 	}
@@ -126,6 +126,16 @@ final class Downloader
 		$this->getCache()->save($url, $data, [Cache::EXPIRE => $invalidTime]);
 	}
 
+    private function getFileName($url): string
+    {
+        return md5($url) . '.txt';
+    }
+
+    private function getFilePath($url): string
+    {
+        return $this->tempDir . '/' . $this->getFileName($url);
+    }
+
 	/**
 	 * Save to file, for next unavaible connect
 	 * @param  string $url  [description]
@@ -133,7 +143,7 @@ final class Downloader
 	 */
 	private function saveToFile($url, $data)
 	{
-		$filename = $this->tempDir . md5($url).'.txt';
+		$filename = $this->getFilePath($url);
 		$handle = fopen('nette.safe://'.$filename, 'w');
 		fwrite($handle, $data);
 		fclose($handle);
@@ -146,7 +156,7 @@ final class Downloader
 	 */
 	private function loadToFile($url)
 	{
-		$filename = $this->tempDir . md5($url).'.txt';
+		$filename = $this->getFilePath($url);
 
 		$handle = fopen('nette.safe://'.$filename, 'r');
 		$result = fread($handle, filesize($filename));

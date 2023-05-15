@@ -28,11 +28,7 @@ abstract class Exchange implements IExchange
 
 	public function setTempDir($tempDir)
 	{
-		if ($tempDir == null) {
-			$this->tempDir = __DIR__ . '/temp/';
-		} else {
-			$this->tempDir = $tempDir;
-		}
+        $this->tempDir = $tempDir;
 
 		if ($this->downloader !== null) {
 			$this->downloader->setTempDir($this->tempDir);
