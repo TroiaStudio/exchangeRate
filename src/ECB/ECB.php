@@ -1,9 +1,10 @@
 <?php
-namespace Galek\Utils\Exchange\ECB;
+namespace TroiaStudio\ExchangeRate\ECB;
 
-use Galek\Utils\Exchange\Downloader;
+use TroiaStudio\ExchangeRate\Downloader;
+use TroiaStudio\ExchangeRate\ECB\time;
 
-abstract class ECB extends \Galek\Utils\Exchange\Exchange implements \Galek\Utils\Exchange\IExchange
+abstract class ECB extends \TroiaStudio\ExchangeRate\Exchange implements \TroiaStudio\ExchangeRate\IExchange
 {
 	/** @var string */
 	private $url_absolute = "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";

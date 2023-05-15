@@ -1,9 +1,10 @@
 <?php
-namespace Galek\Utils\Exchange\CNB;
+namespace TroiaStudio\ExchangeRate\CNB;
 
-use Galek\Utils\Exchange\Downloader;
+use TroiaStudio\ExchangeRate\CNB\time;
+use TroiaStudio\ExchangeRate\Downloader;
 
-abstract class CNB extends \Galek\Utils\Exchange\Exchange implements \Galek\Utils\Exchange\IExchange
+abstract class CNB extends \TroiaStudio\ExchangeRate\Exchange implements \TroiaStudio\ExchangeRate\IExchange
 {
 	/** @var string */
 	private $url_absolute = "https://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt";

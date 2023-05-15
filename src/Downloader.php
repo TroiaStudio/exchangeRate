@@ -1,10 +1,9 @@
 <?php
-namespace Galek\Utils\Exchange;
+namespace TroiaStudio\ExchangeRate;
 
-use Galek\Utils\Calendar\Day;
+use Nette\Utils\DateTime;
 use Nette\Caching\Cache;
 use Nette\Caching\Storages\FileStorage;
-use Galek\Utils\Calendar\Calendar;
 
 final class Downloader
 {
@@ -65,7 +64,7 @@ final class Downloader
 	 */
 	private function validateTime()
 	{
-		$now = new Calendar();
+		$now = new DateTime();
 		$d = $now->format('d');
 		$m = $now->format('m');
 		$Y = $now->format('Y');
@@ -73,7 +72,7 @@ final class Downloader
 
 		$day = ($this->validate[0] === "d" ? $d : $t);
 
-		$invalidTime = new Calendar($day.'.'.$m.'.'.$Y.' '.$this->validate[1]);
+		$invalidTime = new DateTime($day.'.'.$m.'.'.$Y.' '.$this->validate[1]);
 		$invalidTime->add(date_interval_create_from_date_string('5 minutes'));
 
 		$diff = strtotime($invalidTime->format('Y-m-d H:i:s')) - strtotime($now->format('Y-m-d H:i:s'));

@@ -2,15 +2,14 @@
 require __DIR__ .'/../../vendor/autoload.php';
 
 use Tracy\Debugger;
-use Galek\Utils\Calendar;
 
 Debugger::enable(__DIR__ . '/log');
 
-$basic = new \Galek\Utils\Exchange\CNB\Day(__DIR__ . '/../temp');
-$basic3 = new \Galek\Utils\Exchange\CNB\Day(__DIR__ . '/../temp');
+$basic = new \TroiaStudio\ExchangeRate\CNB\Day(__DIR__ . '/../temp');
+$basic3 = new \TroiaStudio\ExchangeRate\CNB\Day(__DIR__ . '/../temp');
 $basic3->setHistory('12.1.2016');
 
-$basic2 = new \Galek\Utils\Exchange\CNB\Other(__DIR__ . '/../temp');
+$basic2 = new \TroiaStudio\ExchangeRate\CNB\Other(__DIR__ . '/../temp');
 
 //dump($basic->getExchange());
 //dump($basic->getExchange(['country', 'Rusko']));

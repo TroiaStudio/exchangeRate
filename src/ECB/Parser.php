@@ -1,7 +1,7 @@
 <?php
-namespace Galek\Utils\Exchange\ECB;
+namespace TroiaStudio\ExchangeRate\ECB;
 
-use Galek\Utils\Exchange\IParser;
+use TroiaStudio\ExchangeRate\IParser;
 
 class Parser implements IParser
 {
@@ -180,7 +180,7 @@ class Parser implements IParser
 	 */
 	private function loadFileLines()
 	{
-		$t = simplexml_load_string($this->file, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_NOBLANKS);
+		$t = \simplexml_load_string($this->file, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_NOBLANKS);
 		$te = $this->object2array($t)["Cube"]["Cube"];
 		return $te;
 	}

@@ -2,11 +2,10 @@
 require __DIR__ .'/../../vendor/autoload.php';
 
 use Tracy\Debugger;
-use Galek\Utils\Calendar;
 
 Debugger::enable(__DIR__ . '/log');
 
-$basic = new \Galek\Utils\Exchange\ECB\Day;
+$basic = new \TroiaStudio\ExchangeRate\ECB\Day;
 
 //Assert::equal(6358.02, $this->day->transferTo('RUB', 100));
 

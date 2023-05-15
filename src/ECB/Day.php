@@ -1,9 +1,7 @@
 <?php
-namespace Galek\Utils\Exchange\ECB;
+namespace TroiaStudio\ExchangeRate\ECB;
 
-use Galek\Utils\Exchange\Downloader;
-
-final class Day extends ECB implements \Galek\Utils\Exchange\IExchange
+final class Day extends ECB implements \TroiaStudio\ExchangeRate\IExchange
 {
 	/**
 	 * [$url_absolute description]
